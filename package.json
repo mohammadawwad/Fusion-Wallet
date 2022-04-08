@@ -1,0 +1,26 @@
+{
+  "name": "fusion-wallet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammadawwad/Fusion-Wallet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohammadawwad/Fusion-Wallet/issues"
+  },
+  "homepage": "https://github.com/mohammadawwad/Fusion-Wallet#readme",
+  "dependencies": {
+    "@vitejs/plugin-react": "^1.3.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "vite": "^2.9.1"
+  }
+}
