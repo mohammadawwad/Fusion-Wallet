@@ -1,31 +1,40 @@
+import React, {useContext} from 'react';
 import {AiFillPlayCircle} from 'react-icons/ai';
 import {SiEthereum} from 'react-icons/si';
 import {BsInfoCircle} from 'react-icons/bs';
-import {Loader} from './'
+import {Loader} from './';
+import {TransactionContext} from '../context/TransactionContext';
+
+//common stlyes used multiple times
+const commonStyles = "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
+
+//input component generator
+const InputGenerator = ({placeHolder, name, type, value, handleChange}) => (
+    <input
+        placeholder={placeHolder}
+        type={type}
+        step="0.0001"
+        value={value}
+        onChange={(e) => handleChange(e, name)}
+        className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-sm white-glassmorphism"
+    />
+);
 
 const Welcome = () => {
-    //function that connect your wallet
-    const connectWallet = () => {
+    
+    //connects your wallet
+    const {connectWallet, currentAccount, formData, sendTransaction, handleChange} = useContext(TransactionContext);
+
+    const handleSubmit = (e) => {
+        const {addressTo, amount, keyword, message} = formData;
+        e.preventDefault();
+
+        //prevents empty form submission
+        if(!addressTo || !amount || !keyword || !message){
+            return;
+        } 
         
-    }
-
-    //common stlyes used multiple times
-    const commonStyles = "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
-
-    //input component generator
-    const InputGenerator = ({placeHolder, name, type, value, handleChange}) => (
-        <input
-            placeholder={placeHolder}
-            type={type}
-            step="0.0001"
-            value={value}
-            onChange={(e) => handleChange(e, name)}
-            className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-sm white-glassmorphism"
-        />
-    );
-
-    const handleSubmit = () => {
-        
+        sendTransaction();
     }
 
     
@@ -43,16 +52,18 @@ const Welcome = () => {
                         Explore the crypto world, buy and sell NFT's all over the world.
                     </p>
 
-                    {/*Button that connects your wallet*/}
-                    <button
-                        type="button"
-                        onClick={connectWallet}
-                        className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[##2546bd]"
-                    >
-                        <p className="text-white text-base font-semibold">
-                            Connect Wallet
-                        </p>
-                    </button>
+                    {/*Button that connects your wallet if you arnt already connected*/}
+                    {!currentAccount && (
+                        <button
+                            type="button"
+                            onClick={connectWallet}
+                            className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[##2546bd]"
+                        >
+                            <p className="text-white text-base font-semibold">
+                                Connect Wallet
+                            </p>
+                        </button>
+                    )}
 
                     {/*All our features*/}
                     <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
@@ -107,16 +118,16 @@ const Welcome = () => {
 
                     {/*form with custom input*/}
                     <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
-                        <InputGenerator placeHolder="Address To" name="addresTo" type="text" handleChange={() => {}}/>
-                        <InputGenerator placeHolder="ETH Amount" name="amount" type="number" handleChange={() => {}}/>
-                        <InputGenerator placeHolder="Keyword (NFT)" name="keyWord" type="text" handleChange={() => {}}/>
-                        <InputGenerator placeHolder="Message" name="message" type="text" handleChange={() => {}}/>
+                        <InputGenerator placeHolder="Address To" name="addressTo" type="text" handleChange={handleChange}/>
+                        <InputGenerator placeHolder="ETH Amount" name="amount" type="number" handleChange={handleChange}/>
+                        <InputGenerator placeHolder="Keyword (NFT)" name="keyword" type="text" handleChange={handleChange}/>
+                        <InputGenerator placeHolder="Message" name="message" type="text" handleChange={handleChange}/>
 
                         
                         <div className="h-[1px] w-full bg-gray-400 my-2"/>
 
                         {/*loading/button depending on form on send*/}
-                        {true ? (
+                        {false ? (
                             <Loader/>
                         ) : (
                             <button
