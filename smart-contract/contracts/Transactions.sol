@@ -1,10 +1,14 @@
+// SPDX-License-Identifier: UNLICENSED
+
+
+
 //solidity version
 pragma solidity ^0.8.0;
 
 //similar to class in OOP
 contract Transactions {
     //number variable
-    uint256 transactionCounter;
+    uint256 transactionCount;
 
     //event is a function, that needs to later be emited
     //addres is a type, from is the var name
@@ -22,7 +26,7 @@ contract Transactions {
     }
 
     //array of transfer structure (array of objects)
-    TransferStruct[] transaction;
+    TransferStruct[] transactions;
 
     //function that does not return anything
     function addToBlockchain(address payable reciever, uint amount, string memory message, string memory keyword) public {

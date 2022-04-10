@@ -1,27 +1,33 @@
 
 
-const main = async () {
-  // Hardhat always runs the compile task when running scripts with its command
-  // line interface.
-  //
-  // If this script is run directly using `node` you may want to call compile
-  // manually to make sure everything is compiled
-  // await hre.run('compile');
+const main = async () => {
+    // We get the contract to deploy
+    //like a function factory or class that generates instances of the smart contract
+    const Transactions = await hre.ethers.getContractFactory("Transactions");
 
-  // We get the contract to deploy
-  const Greeter = await hre.ethers.getContractFactory("Greeter");
-  const greeter = await Greeter.deploy("Hello, Hardhat!");
+    //specific instance of contract
+    const transactions = await Transactions.deploy();
+    await transactions.deployed();
 
-  await greeter.deployed();
-
-  console.log("Greeter deployed to:", greeter.address);
+    //.address returns address of contract deployed on the blockchain
+    console.log("Transactions deployed to:", transactions.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
-main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
+
+const runMain = async () => {
+    try {
+        //executes and deploys the contract
+        await main();
+
+        //compiled seccessfully
+        process.exit(0);
+    } catch (error) {
+        //error caught
+        console.log(error);
+        process.exit(1);
+    }
+}
+
+runMain();
