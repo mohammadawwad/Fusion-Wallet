@@ -14,3 +14,5 @@ T run the project go into shell and go into the client directory
 `cd ./client`
 
 Then type `npm run dev` to start the project on your local machine
+
+Trying to run my code quickly, check it out in Replit and run it there: https://replit.com/@awwad/Fusion-Wallet
