@@ -50,7 +50,7 @@ const Welcome = () => {
                     </h1>
 
                     <p className="text-left mt-5 text-white font-light md:w9/12 w-11/12 text-base">
-                        Explore the crypto world, buy and sell NFT's all over the world.
+                        Explore the crypto world, Fusion Wallet allows you to buy, sell, and gift random NFT's based of your keyword, along side Ethereum Transactions all over the world based.
                     </p>
 
                     {/*Button that connects your wallet if you arnt already connected*/}
@@ -58,7 +58,7 @@ const Welcome = () => {
                         <button
                             type="button"
                             onClick={connectWallet}
-                            className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[##2546bd]"
+                            className="flex flex-row justify-center items-center my-5 bg-[#2952e3] py-3 px-10 rounded-full cursor-pointer transition ease-in-out delay-100 hover:scale-105  border-[#2952e3] hover:border-indigo-500 hover:bg-transparent duration-300 border-[1px]"
                         >
                             <p className="text-white text-base font-semibold">
                                 Connect Wallet
@@ -95,7 +95,7 @@ const Welcome = () => {
                 
                 {/*ethereum address card*/}
                 <div className="flex flex-col flex-1 items-center justify-start w-full mf:mt-0 mt-10">
-                    <div className="p-3 flex justify-end items-start flex-col rounded-xl h-40 sm:w-72 w-full my-5 eth-card .white-glassmorphism ">
+                    <div className="p-3 flex justify-end items-start flex-col rounded-xl h-40 sm:w-72 w-full my-5 eth-card .white-glassmorphism">
                         <div className="flex justify-between flex-col w-full h-full">
                             <div className="flex justify-between items-start">
                                 <div className="w-10 h-10 rounded-full border-2 border-white flex justify-center items-center">
@@ -111,7 +111,7 @@ const Welcome = () => {
                                 </p>
                                 
                                 <p className="text-white font-semibold text-lg mt-1">
-                                    Ethereum
+                                    Ethereum ID
                                 </p>
                             </div>
                         </div>
@@ -134,7 +134,7 @@ const Welcome = () => {
                             <button
                                 type="button"
                                 onClick={handleSubmit}
-                                className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] rounded-full cursor-pointer"
+                                className="transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:border-indigo-500 duration-300 text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] rounded-full cursor-pointer"
                             >
                                 Send Now
                             </button>

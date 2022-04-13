@@ -16,7 +16,8 @@ const Navbar = () => {
   return (
     <nav className="w-full flex md:justify-center justify-between items-center p-4">
       <div className="md:flex-[0.5] flex-initial justify-center items-center">
-          <img src={logo} alt="logo" className="w-32 cursor-pointer" /> 
+          <img src={logo} alt="logo" className="w-32 cursor-pointer"/> 
+          <p className="text-white text-xl">Fussion Wallet</p>
       </div>
 
       {/*Loops through the items in the array and creates them as navbar items/buttons*/}
