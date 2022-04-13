@@ -9,3 +9,8 @@ important sites for development include:
   -Ropsten Fauset 
   -Etherscan
   
+ 
+T run the project go into shell and go into the client directory
+`cd ./client`
+
+Then type `npm run dev` to start the project on your local machine
