@@ -24,7 +24,7 @@ const InputGenerator = ({placeHolder, name, type, value, handleChange}) => (
 const Welcome = () => {
     
     //connects your wallet
-    const {connectWallet, currentAccount, formData, sendTransaction, handleChange} = useContext(TransactionContext);
+    const {connectWallet, currentAccount, formData, sendTransaction, handleChange, isLoading} = useContext(TransactionContext);
 
     const handleSubmit = (e) => {
         const {addressTo, amount, keyword, message} = formData;
@@ -128,7 +128,7 @@ const Welcome = () => {
                         <div className="h-[1px] w-full bg-gray-400 my-2"/>
 
                         {/*loading/button depending on form on send*/}
-                        {false ? (
+                        {isLoading ? (
                             <Loader/>
                         ) : (
                             <button

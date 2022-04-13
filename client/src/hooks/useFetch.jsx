@@ -10,11 +10,11 @@ const useFetch = ({keyword}) => {
     const fetchGifs = async () => {
         try{
             //splits words then joins them so it can be searched withouth spaces and only looks for 1 gif
-            const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${keyword.split(" ").join("")}$limit=1`);
+            const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${keyword.split(" ").join("")}&limit=1`);
 
             //destructuring the data
             const {data} = await response.json();
-            setGifURL(data[0]?.image?.downsized_medium?.url);
+            setGifURL(data[0]?.images?.downsized_medium.url);
     
         } catch(error) {
             //generates a demo gif if nothing is found
